@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Personal check list</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- <script src="./node_modules/html5-qrcode/html5-qrcode-scanner.d.ts"></script> -->
+		<script src="https://tanawatthnidecprecision.github.io/Module_nidec/nidec.min.js"></script>
+		<script src="./assets/js/qrcode.js"></script>
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper1">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/nidec_logo2.gif" alt="" /></span><span class="title">Nidec precision components</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<!-- <li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li> -->
+							<li><a href="about.html">About</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+
+				<div id = "detail">
+					<p1>Model :</p1><br>
+					<p1>Process :</p1>
+					<p>Name :</p>
+				</div>
+				
+				<div id="qr-reader" style="width:500px"></div>
+				<div id="qr-reader-results"></div>
+
+				<script> 	
+					var resultContainer = document.getElementById('qr-reader-results');
+					var lastResult, countResults = 0;
+				</script>
+
+				<script type ="module">
+
+					import { $api } from "https://tanawatthnidecprecision.github.io/Module_nidec/nidec.min.js";
+					function onScanSuccess(decodedText, decodedResult) {
+						if (decodedText !== lastResult) {
+							++countResults;
+							lastResult = decodedText;
+							// Handle on success condition with the decoded message.
+							console.log(`Scan result ${decodedText}`, decodedResult);
+							
+							window.addEventListener("load", async () => {
+							console.log(await $api.user_config.getConfig("index is not null"));
+				});
+						}
+					}
+				</script>
+
+					<div id="main">
+						<div class="inner">
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pp4.png" alt="" />
+									</span>
+									<a href="scan_qr.html">
+										<h4 style = "color: rgb(0, 0, 255)">ลงทะเบียนเข้า</h4>
+										<div class="content">
+											<p>Scan QR code ลงทะเบียนเข้า</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/Out.png" alt="" />
+									</span>
+									<a href="scan_qr.html">
+										<h4 style = "color: rgb(0, 0, 255)">ลงทะเบียนออก</h4>
+										<div class="content">
+											<p>Scan QR code ลงทะเบียนออกจากระบบ</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/Toilet1.png" alt="" />
+									</span>
+									<a href="generic.html">
+										<h4 style = "color: rgb(0, 0, 255)">เข้าห้องน้ำ</h4>
+										<div class="content">
+											<p>เข้าห้องน้ำ ในเวลาทำงาน</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/reject.png" alt="" />
+									</span>
+									<a href="generic.html">
+										<h4 style = "color: rgb(0, 0, 255)">ตรวจสอบซ่อม</h4>
+										<div class="content">
+											<p>เวลาที่ใช้ในการตรวจสอบ/ซ่อม อีกครั้งจาก QC reject</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pngwing.png" alt="" />
+									</span>
+									<a href="activity.html">
+										<h4 style = "color: rgb(0, 0, 255)">กิจกรรม อื่นๆ</h4>
+										<div class="content">
+											<p>เลือกกิจกรรม อื่นๆ</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/OT.png" alt="" />
+									</span>
+									<a href="ot_request.html">
+										<h4 style = "color: rgb(0, 0, 255)">ทำงานล่วงเวลา</h4>
+										<div class="content">
+											<p>ลงชื่อพนักงานในการทำงานล่วงเวลา (สำหรับหัวหน้างาน)</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/working.png" alt="" />
+									</span>
+									<a href="user_config.html">
+										<h2 style = "color: rgb(0, 0, 255)"> User config</h2>
+										<div class="content">
+											<p>อัพเดทหรือแก้ไข พนักงานประจำกระบวนการผลิต</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic08.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Free</h2>
+										<div class="content">
+											<p>รอตอนต่อไป</p>
+										</div>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+
+							<ul class="copyright">
+								<li>Web: <a href="http://intranets.nidec-copal.co.th/SystemManagement/">Nidec precision components thailand</a></li>
+							</ul>
+						</div>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+
+				<script src="assets/js/jquery.min.js"></script>
+				<script src="assets/js/browser.min.js"></script>
+				<script src="assets/js/breakpoints.min.js"></script>
+				<script src="assets/js/util.js"></script>
+				<script src="assets/js/main.js"></script>
+
+
+
+		<script type="module">
+			import { $api } from "https://tanawatthnidecprecision.github.io/Module_nidec/nidec.min.js";
+				
+			window.addEventListener("load", async () => {
+			console.log(await $api.user_config.getConfig("index is not null"));
+			});
+		</script>
+
+	</body>
+</html>
