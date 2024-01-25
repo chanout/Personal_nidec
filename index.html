@@ -61,9 +61,9 @@
       <!-- Main -->
 
       <div id="detail">
-        <p1>Model :</p1><br />
-        <p1>Process :</p1>
-        <p>Name :</p>
+        <p1>Model : <a id="model_name"></a></p1><br />
+        <p1>Process : <a id="process_name"></a></p1>
+        <p>Name : <a id="name"></a></p>
       </div>
 
       <div id="qr-reader" style="width: 500px"></div>
@@ -221,11 +221,23 @@
           lastResult = decodedText;
           // Handle on success condition with the decoded message.
           console.log(`Scan result ${decodedText}`, decodedResult);
-          console.log(
-            await window.module.$api.user_config.getConfig(
+		  const response = await window.module.$api.user_config.getConfig(
               `model='${decodedText}'`
             )
-          );
+			console.log(response)
+          if(response.status == 'successful'){
+			document.getElementById('model_name').innerHTML = response.data[0][1]
+			document.getElementById('process_name').innerHTML = response.data[0][3]
+			document.getElementById('name').innerHTML = response.data[0][5]
+			localStorage.setItem(decodedText,JSON.stringify({
+				model_name: response.data[0][1],
+				process_name: response.data[0][3],
+				name: response.data[0][5],
+			}))
+		  }else {
+			document.getElementById('model_name').innerHTML = ''
+			document.getElementById('process_name').innerHTML = ''
+		  }
         }
       }
     </script>
