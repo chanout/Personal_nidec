@@ -8,6 +8,7 @@
   var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
     fps: 10,
     qrbox: 250,
+    rememberLastUsedCamera: false,
   });
   html5QrcodeScanner.render(onScanSuccess);
   var $window = $(window),
